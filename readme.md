@@ -19,7 +19,7 @@ The contract also has a security measure in place to prevent the reception of fu
 * **transferAccess(address _new_address)** - Allows an approved address to transfer its access to a new address. If the contract owner initiates this function, the ownership of the contract is also transferred.
 * **approveAccess(address _address)** - Only accessible by the contract owner. This function approves the access for the specified address if it is not already approved.
 * **revokeAccess(address _address)** - Only accessible by the contract owner. This function revokes the access for a specified address if it was approved before. The contract owner cannot revoke their own access.
-* * **burnAccess()** - Only accessible by approved addresses. The contract owner address cannot have access revoked via this function. This will always cause the msg.sender address to lose access.
+* **burnAccess()** - Only accessible by approved addresses. The contract owner address cannot have access revoked via this function. This will always cause the msg.sender address to lose access.
 
 ## Modifiers <a name="modifiers"></a>
 
