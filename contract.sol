@@ -42,10 +42,19 @@ contract BasicAddressAccess {
 
     // contractOwner can revoke access to any address, except for their own
     function revokeAccess(address _address) public onlyContractOwner {
+        _revokeAccess(_address);
+    }
+
+    // internal revoke function that is used by contractOwner's revoke & also the public "burn" function
+    function _revokeAccess(address _address) private {
         require(hasAccess(_address) == true, "You do not need to revoke access because this address has not been approved previously.");
         require(_address != contractOwner, "You cannot remove the contractOwner address from the approved address list.");
         approvedAddresses[_address] = false;
         totalApproved--;
+    }
+
+    function burnAccess() public approvedOnly {
+        _revokeAccess(msg.sender);
     }
 
     modifier onlyContractOwner() {
